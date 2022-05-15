@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f7f7ff;
+}
+
+.login__form {
+  width: 75%;
+  margin: 4rem auto;
+}

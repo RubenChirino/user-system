@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f7f7ff;
+}
+
+.register__form {
+  width: 75%;
+  margin: 4rem auto;
+}
+
+#form-info-element {
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+  margin-top: 0.3rem;
+  color: #d93025;
+}
+
+#form-info-element span {
+  display: block;
+  margin-left: 0.8rem;
+}

@@ -1,0 +1,16 @@
+.navbar {
+  background-color: #007bff !important;
+}
+
+.navbar .navbar-nav .nav-link {
+  margin-left: 0.5rem;
+}
+
+#navbarNavAltMarkup {
+  justify-content: flex-end;
+}
+
+.navbar-brand svg {
+  height: 50px;
+  fill: white;
+}

@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f7f7ff !important;
+}
+
+.welcome__container {
+  margin-top: 3rem;
+}
+
+/* === Table Styles === */
+
+.list__container {
+  margin-top: 3rem;
+  width: 80%;
+}
+
+.list__container h3 {
+  font-size: 28px;
+  margin-top: 1rem;
+}
+
+.table__container table {
+  /* margin-top: 2rem; */
+  border-radius: 0.25rem !important;
+}
+
+.table__container table thead tr th {
+  font-weight: 500;
+}
+
+@media (max-width: 978px) {
+  .table__container {
+    overflow-x: scroll;
+  }
+}
+
+@media (max-width: 576px) {
+  .list__container {
+    width: 80%;
+  }
+}
+
+/* Status */
+
+.badge-success {
+  background-color: #c7f5d9;
+  color: #0b4121;
+}
+
+.badge-primary {
+  background-color: #cfe0fc;
+  color: #0a47a9;
+}
+
+.badge-warning {
+  background-color: #ffebc2;
+  color: #453008;
+}
