@@ -13,8 +13,8 @@
 <?php
     require_once 'conexion.php';
 
-    $apodo = $_POST['username'];
-    $password = $_POST['contraseña'];
+    $apodo = clean_data($_POST['username'], $conexion);
+    $password = clean_data($_POST['contraseña'], $conexion);
 
     if (empty($apodo) || empty($password)) {
         echo '<div class="alert alert-danger" style="margin-bottom: 0;" role="alert">

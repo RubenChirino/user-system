@@ -13,12 +13,13 @@
 <?php
     require_once 'conexion.php';
 
-    $name = $_POST['nombre'];
-    $lastname = $_POST['apellido'];
-    $nickname = $_POST['apodo'];
-    $age = $_POST['edad'];
-    $email = $_POST['email'];
+    $name = clean_data($_POST['nombre'], $conexion);
+    $lastname = clean_data($_POST['apellido'], $conexion);
+    $nickname = clean_data($_POST['apodo'], $conexion);
+    $age = clean_data($_POST['edad'], $conexion);
+    $email = clean_data(strtolower($_POST['email']), $conexion);
     $profession = empty($_POST['profesion']) ? NULL : $_POST['profesion'];
+    $profession = clean_data($profession, $conexion);
 
     // Required Values
     if (empty($name) || empty($lastname) || empty($nickname) || empty($age) || empty($email)) {

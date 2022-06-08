@@ -13,7 +13,7 @@
 <?php
     require_once 'conexion.php';
 
-    $nickname = $_POST['apodo'];
+    $nickname = clean_data($_POST['apodo'], $conexion);
 
     // Required Values
     if (empty($nickname)) {

@@ -13,12 +13,13 @@
 <?php
     require_once 'conexion.php';
 
-    $name = $_POST['nombre'];
-    $lastname = $_POST['apellido'];
-    $nickname = $_POST['apodo'];
-    $age = $_POST['edad'];
-    $email = strtolower($_POST['email']);
+    $name = clean_data($_POST['nombre'], $conexion);
+    $lastname = clean_data($_POST['apellido'], $conexion);
+    $nickname = clean_data($_POST['apodo'], $conexion);
+    $age = clean_data($_POST['edad'], $conexion);
+    $email = clean_data(strtolower($_POST['email']), $conexion);
     $password = password_hash($_POST['contraseña'], PASSWORD_DEFAULT);
+    $password = clean_data($password, $conexion);
 
     if (empty($name) || empty($lastname) || empty($nickname) || empty($age) || empty($email) || empty($password)) {
         echo '<div class="alert alert-danger" style="margin-bottom: 0;" role="alert">
