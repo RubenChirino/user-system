@@ -82,7 +82,7 @@
                     if (mysqli_num_rows($isNicknameOnDB) > 0) { 
 
                         while($row = $isNicknameOnDB->fetch_assoc()) {
-                            echo '<div class="container">';
+                            echo '<div class="container edit_container">';
                                 echo '<div class="main-body">';
                                     echo '<div class="row">';
 
@@ -118,7 +118,7 @@
                                                     echo '</div>';
 
                                                     echo '<div class="row mb-4">';
-                                                        echo '<div class="col">';
+                                                        echo '<div class="col-12 col-md-6 col-responsive">';
                                                             echo '<div class="form-outline">';
                                                                 echo '<input disabled value="'.$row["apodo"].'" id="inputNickname" type="text" maxlength="35" class="form-control" required />';
                                                                 echo '<input  value="'.$row["apodo"].'" name="apodo" type="hidden" required />';
@@ -126,7 +126,7 @@
                                                             echo '</div>';
                                                         echo '</div>';
 
-                                                        echo '<div class="col">';
+                                                        echo '<div class="col-12 col-md-6">';
                                                             echo '<div class="form-outline">';
                                                                 echo '<input value="'.$row["edad"].'" id="inputAge" min="0" max="110" name="edad" type="number" class="form-control" required />';
                                                                 echo '<label class="form-label" for="inputAge">Edad</label>';
@@ -144,13 +144,17 @@
                                                         echo '<label class="form-label" for="inputProfession">Profesion</label>';
                                                     echo '</div>';
 
-                                                    echo '<button id="updateBtn" type="submit" class="btn btn-primary mb-3" disabled=true>';
-                                                        echo 'Guardar cambios';
-                                                    echo '</button>';  
-                                                    
-                                                    echo '<button id="deleteBtn" type="button" class="btn btn-danger mb-3" style="margin-left: 1rem;">';
-                                                        echo 'Eliminar cuenta';
-                                                    echo '</button>';     
+                                                    echo '<div class="row mb-3 row-buttons">';
+                                                        echo '<button id="updateBtn" type="submit" class="btn btn-primary" disabled=true>';
+                                                            echo 'Guardar cambios';
+                                                        echo '</button>';  
+                                                        
+                                                        echo '<button id="deleteBtn" type="button" class="btn btn-danger">';
+                                                            echo 'Eliminar cuenta';
+                                                        echo '</button>'; 
+                                                    echo '</div>';
+
+                                                        
 
                                                 echo '</form>';
                                             echo '</div>';
@@ -212,7 +216,6 @@
                                 const deleteBtn = document.querySelector("#deleteBtn");
                                 const deleteUserModal = document.querySelector("#deleteUserModalToggle");
                                 deleteBtn.addEventListener("click", function () {
-                                    console.log(deleteUserModal);
                                     deleteUserModal.click();
                                 });
 

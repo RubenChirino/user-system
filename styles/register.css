@@ -25,3 +25,16 @@ body {
   display: block;
   margin-left: 0.8rem;
 }
+
+@media screen and (max-width: 768px) {
+  .col-responsive {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .register__form {
+    width: 85%;
+    margin: 2.5rem auto;
+  }
+}

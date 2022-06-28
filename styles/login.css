@@ -12,3 +12,10 @@ body {
   width: 75%;
   margin: 4rem auto;
 }
+
+@media screen and (max-width: 576px) {
+  .login__form {
+    width: 85%;
+    margin: 2.5rem auto;
+  }
+}

@@ -53,13 +53,13 @@
             echo '<form method="post" action="../utils/db/addUser.php" class="register__form">
             <!-- Name and Last Name -->
             <div class="row mb-4">
-              <div class="col">
+              <div class="col-12 col-md-6 col-responsive">
                 <div class="form-outline">
                   <input id="inputName" name="nombre" type="text" maxlength="80" class="form-control" required />
                   <label class="form-label" for="inputName">Nombre</label>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-12 col-md-6">
                 <div class="form-outline">
                   <input id="inputLastname" name="apellido" type="text" maxlength="80" class="form-control" required />
                   <label class="form-label" for="inputLastname">Apellido</label>
@@ -69,13 +69,13 @@
 
             <!-- Nickname and Country -->
             <div class="row mb-4">
-              <div class="col">
+              <div class="col-12 col-md-6 col-responsive">
                 <div class="form-outline">
                   <input id="inputNickname" name="apodo" type="text" maxlength="35" class="form-control" required />
                   <label class="form-label" for="inputNickname">Apodo</label>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-12 col-md-6">
                 <div class="form-outline">
                   <input id="inputAge" min="0" max="110" name="edad" type="number" class="form-control" required />
                   <label class="form-label" for="inputAge">Edad</label>       
