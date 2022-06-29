@@ -284,7 +284,7 @@
                 }
 
             } else {
-                header("Location: /user-system/login.php");
+                header("Location: /user-system/pages/login.php");
             }
         ?>               
     </main>
