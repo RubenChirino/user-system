@@ -10,6 +10,7 @@ body {
 
 .register__form {
   width: 75%;
+  max-width: 500px;
   margin: 4rem auto;
 }
 
