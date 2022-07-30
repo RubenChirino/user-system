@@ -54,13 +54,13 @@
             <!-- Email input -->
             <div class="form-outline mb-4">
               <input name="username" id="inputUsername" autocomplete="username" type="text" class="form-control" required />
-              <label class="form-label" for="inputUsername">Username (Apodo)</label>
+              <label class="form-label" for="inputUsername">Username (Apodo)*</label>
             </div>
           
             <!-- Password input -->
             <div class="form-outline mb-4">
               <input name="contraseña" id="inputPassword" autocomplete="current-password" type="password" class="form-control" required />
-              <label class="form-label" for="inputPassword">Password</label>
+              <label class="form-label" for="inputPassword">Password*</label>
             </div>
           
             <!-- 2 column grid layout for inline styling -->

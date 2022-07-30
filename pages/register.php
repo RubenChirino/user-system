@@ -56,13 +56,13 @@
               <div class="col-12 col-md-6 col-responsive">
                 <div class="form-outline">
                   <input id="inputName" name="nombre" type="text" maxlength="80" class="form-control" required />
-                  <label class="form-label" for="inputName">Nombre</label>
+                  <label class="form-label" for="inputName">Nombre*</label>
                 </div>
               </div>
               <div class="col-12 col-md-6">
                 <div class="form-outline">
                   <input id="inputLastname" name="apellido" type="text" maxlength="80" class="form-control" required />
-                  <label class="form-label" for="inputLastname">Apellido</label>
+                  <label class="form-label" for="inputLastname">Apellido*</label>
                 </div>
               </div>
             </div>
@@ -72,13 +72,13 @@
               <div class="col-12 col-md-6 col-responsive">
                 <div class="form-outline">
                   <input id="inputNickname" name="apodo" type="text" maxlength="35" class="form-control" required />
-                  <label class="form-label" for="inputNickname">Apodo</label>
+                  <label class="form-label" for="inputNickname">Apodo*</label>
                 </div>
               </div>
               <div class="col-12 col-md-6">
                 <div class="form-outline">
                   <input id="inputAge" min="0" max="110" name="edad" type="number" class="form-control" required />
-                  <label class="form-label" for="inputAge">Edad</label>       
+                  <label class="form-label" for="inputAge">Edad*</label>       
                 </div>
               </div>
             </div>
@@ -86,25 +86,24 @@
             <!-- Email input -->
             <div class="form-outline mb-4">
               <input autocomplete="email" id="inputEmail" name="email" type="email" class="form-control" required />
-              <label class="form-label" for="inputEmail">Correo Electronico</label>
+              <label class="form-label" for="inputEmail">Correo Electronico*</label>
             </div>
           
             <!-- Password input -->
             <div class="form-outline mb-4">
               <input autocomplete="current-password" id="inputPassword" name="contraseña" type="password" class="form-control" required />
-              <label class="form-label" for="inputPassword">Contraseña</label>
+              <label class="form-label" for="inputPassword">Contraseña*</label>
             </div>
 
             <div class="form-outline">
               <input autocomplete="current-password" id="inputPassword2" name="contraseña2" type="password" class="form-control" required />
-              <label class="form-label" for="inputPassword2">Repetir contraseña</label>
+              <label class="form-label" for="inputPassword2">Repetir contraseña*</label>
             </div>
             <div id="form-info-element">
               <i class="fa-solid fa-circle-exclamation"></i>
               <span></span>
             </div>
             
-          
             <!-- Checkbox -->
             <div class="form-check d-flex justify-content-center mb-4">
               <input id="inputShowPassword" class="form-check-input" type="checkbox" />
