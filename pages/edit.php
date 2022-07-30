@@ -83,6 +83,11 @@
 
                         while($row = $isNicknameOnDB->fetch_assoc()) {
                             echo '<div class="container edit_container">';
+
+                            echo '<button class="back_btn">';
+                                echo '<i class="fa-solid fa-angle-left"></i>';
+                            echo '</button>';
+
                                 echo '<div class="main-body">';
                                     echo '<div class="row">';
 
@@ -144,16 +149,17 @@
                                                         echo '<label class="form-label" for="inputProfession">Profesion</label>';
                                                     echo '</div>';
 
-                                                    if ($user_is_admin) {
                                                     echo '<div class="form-outline_custom mb-4">';
-                                                        echo '<label for="rolSelect">Rol</label>';
-                                                        echo '<select id="rolSelect" class="form-control" name="rol">';
+                                                        if (!$user_is_admin) {
+                                                            echo '<input type="hidden" name="rol" value="'.$row["rol"].'" />';
+                                                        }
+                                                        echo '<label for="rolSelect" class="'.($user_is_admin ? "label_noDisabled" : "label_disabled").'">Rol</label>';
+                                                        echo '<select '.($user_is_admin ? "" : "disabled").'  id="rolSelect" class="form-control" name="rol">';
                                                             echo '<option value="miembro" '.($row["rol"] == "miembro" ? "selected" : "").'>Miembro</option>';
                                                             echo '<option value="admin" '.($row["rol"] == "admin" ? "selected" : "").'>Administrador</option>';
                                                             echo '<option value="owner" '.($row["rol"] == "owner" ? "selected" : "").'>Propietario</option>';
                                                         echo '</select>';
-                                                    echo '</div>';
-                                                    }
+                                                    echo '</div>';                                                    
 
                                                     echo '<div class="row mb-3 row-buttons">';
                                                         echo '<button id="updateBtn" type="submit" class="btn btn-primary" disabled=true>';
@@ -176,12 +182,11 @@
                             echo '</div>';  
 
                             // =====  Modal =====
-
-                            echo '
-                            <input type="hidden" data-mdb-toggle="modal" data-mdb-target="#deleteUserModal" id="deleteUserModalToggle" />
-                            <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
+               
+                    echo '<input type="hidden" data-mdb-toggle="modal" data-mdb-target="#deleteUserModal" id="deleteUserModalToggle" />
+                    <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
                                 <div class="modal-header">
                                   <h5 class="modal-title" id="deleteUserModalLabel">Eliminar cuenta</h5>
                                   <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
@@ -192,16 +197,16 @@
                                   echo '<p>¿Estás seguro de que quieres eliminar '.$text.' cuenta? No podrás recuperar la informacion.</p>';
                                 echo '</div>';
 
-                                echo '<div class="modal-footer">
-                                    <form method="post" action="../utils/db/deleteUser.php">
-                                        <input value="'.$queryNickname.'" name="apodo" type="hidden" required />
-                                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                                    </form>
-                                </div>
-                              </div>
-                            </div>
-                          </div>';
+                                echo '<div class="modal-footer">';
+                                    echo '<form method="post" action="../utils/db/deleteUser.php">';                                      
+                                        echo '<input value="'.$queryNickname.'" name="apodo" type="hidden" required />';
+                                        echo '<button type="button" class="btn btn-secondary cancel_btn" data-mdb-dismiss="modal">Cancelar</button>';
+                                        echo '<button type="submit" class="btn btn-danger">Eliminar</button>';
+                                    echo '</form>';
+                                echo '</div>';
+                            echo '</div>';
+                        echo '</div>';
+                    echo'</div>';
                             
                             echo '<script>
                                 const inputName = document.querySelector("#inputName");
@@ -212,6 +217,11 @@
                                 const inputProfession = document.querySelector("#inputProfession");
 
                                 const selectRol = document.querySelector("#rolSelect");
+
+                                const backBtn = document.querySelector(".back_btn"); 
+                                backBtn.addEventListener("click", function() {
+                                    window.location.href = "/user-system";
+                                });
 
                                 // Required Data
                                 const inputs = [inputName, inputLastname, inputNickname, inputAge, inputEmail];
