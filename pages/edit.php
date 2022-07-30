@@ -144,6 +144,17 @@
                                                         echo '<label class="form-label" for="inputProfession">Profesion</label>';
                                                     echo '</div>';
 
+                                                    if ($user_is_admin) {
+                                                    echo '<div class="form-outline_custom mb-4">';
+                                                        echo '<label for="rolSelect">Rol</label>';
+                                                        echo '<select id="rolSelect" class="form-control" name="rol">';
+                                                            echo '<option value="miembro" '.($row["rol"] == "miembro" ? "selected" : "").'>Miembro</option>';
+                                                            echo '<option value="admin" '.($row["rol"] == "admin" ? "selected" : "").'>Administrador</option>';
+                                                            echo '<option value="owner" '.($row["rol"] == "owner" ? "selected" : "").'>Propietario</option>';
+                                                        echo '</select>';
+                                                    echo '</div>';
+                                                    }
+
                                                     echo '<div class="row mb-3 row-buttons">';
                                                         echo '<button id="updateBtn" type="submit" class="btn btn-primary" disabled=true>';
                                                             echo 'Guardar cambios';
@@ -183,7 +194,8 @@
 
                                 echo '<div class="modal-footer">
                                     <form method="post" action="../utils/db/deleteUser.php">
-                                    <input value="'.$queryNickname.'" name="apodo" type="hidden" required />
+                                        <input value="'.$queryNickname.'" name="apodo" type="hidden" required />
+                                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancelar</button>
                                         <button type="submit" class="btn btn-danger">Eliminar</button>
                                     </form>
                                 </div>
@@ -199,7 +211,10 @@
                                 const inputEmail = document.querySelector("#inputEmail");
                                 const inputProfession = document.querySelector("#inputProfession");
 
-                                const inputs = [inputName, inputLastname, inputNickname, inputAge, inputEmail, inputProfession];
+                                const selectRol = document.querySelector("#rolSelect");
+
+                                // Required Data
+                                const inputs = [inputName, inputLastname, inputNickname, inputAge, inputEmail];
 
                                 const updateBtn = document.querySelector("#updateBtn");
                                 updateBtn.addEventListener("click", function () {
@@ -219,12 +234,23 @@
                                     deleteUserModal.click();
                                 });
 
-                                setValidations([inputName, inputLastname, inputNickname, inputAge, inputEmail, inputProfession]);
+                                setValidations(
+                                    {
+                                        inputs: [inputName, inputLastname, inputNickname, inputAge, inputEmail, inputProfession],
+                                        selects: [selectRol],
+                                    }
+                                );
 
-                                function setValidations(inputs) {
+                                function setValidations({ inputs = [], selects = [] }) {
                                     inputs.forEach(input => {
                                         input.addEventListener("input", function () {
                                             updateBtn.disabled = ((checkThereAreChanges()) ? false : true) || areInputsEmpty();                                         
+                                        });
+                                    });
+
+                                    selects.forEach(select => {
+                                        select.addEventListener("change", function () {
+                                            updateBtn.disabled = ((checkThereAreChanges()) ? false : true) || areInputsEmpty();
                                         });
                                     });
                                 }
@@ -239,9 +265,17 @@
                                             input.value = "";
                                         }
                                     });
-                                  }
+                                }
 
-                                function checkThereAreChanges() {                     
+                                function checkThereAreChanges() {  
+                                    if (inputProfession.value !== '.json_encode($row["profesion"]).') {
+                                        return true;
+                                    } 
+                            
+                                    if (selectRol.value !== '.json_encode($row["rol"]).') {
+                                        return true;
+                                    }
+                                    
                                     if (inputName.value !== '.json_encode($row["nombre"]).') {
                                         return true;
                                     } 
@@ -256,14 +290,7 @@
                                     } 
                                     if (inputEmail.value !== '.json_encode($row["correo"]).') {
                                         return true;
-                                    } 
-
-                                    // Opcional Value
-                                    if ('.json_encode($row["profesion"]).') {
-                                        return (inputProfession.value !== '.json_encode($row["profesion"]).') ? true : false;
-                                    } else {
-                                        return (inputProfession.value !== "") ? true : false;
-                                    } 
+                                    }                              
 
                                     return false;
                                 }

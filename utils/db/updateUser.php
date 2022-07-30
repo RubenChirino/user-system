@@ -21,8 +21,10 @@
     $profession = empty($_POST['profesion']) ? NULL : $_POST['profesion'];
     $profession = clean_data($profession, $conexion);
 
+    $rol = clean_data($_POST['rol'], $conexion);
+
     // Required Values
-    if (empty($name) || empty($lastname) || empty($nickname) || empty($age) || empty($email)) {
+    if (empty($name) || empty($lastname) || empty($nickname) || empty($age) || empty($email) || empty($rol)) {
         echo '<div class="alert alert-danger" style="margin-bottom: 0;" role="alert">
             <strong>Error!</strong> No se pudo actualizar el usuario. Por favor, verifique que se envien los campos requeridos.
         </div>
@@ -46,7 +48,7 @@
         if (mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM usuario WHERE apodo = '$nickname'")) > 0) { // The user exist
 
             // Update User
-            $query = "UPDATE usuario SET nombre = '$name', apellido = '$lastname', apodo = '$nickname', edad = '$age', correo = '$email', profesion = '$profession' WHERE apodo = '$nickname'";
+            $query = "UPDATE usuario SET nombre = '$name', apellido = '$lastname', apodo = '$nickname', edad = '$age', correo = '$email', profesion = '$profession', rol = '$rol' WHERE apodo = '$nickname'";
             $executed_query = mysqli_query($conexion, $query);
 
             if ($executed_query) {

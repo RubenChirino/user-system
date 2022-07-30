@@ -33,6 +33,20 @@ main .user__profile-img {
   margin-top: 3rem;
 }
 
+.form-outline_custom {
+  position: relative;
+}
+
+.form-outline_custom label {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 13.5px;
+  position: absolute;
+  top: -11px;
+  background: white;
+  left: 0.75rem;
+  padding: 0 0.2rem;
+}
+
 #updateBtn {
   width: 200px;
 }
@@ -41,6 +55,15 @@ main .user__profile-img {
   width: 200px;
   margin-left: 1rem;
 }
+
+#rolSelect {
+  border: 1px solid lightgray;
+}
+
+/* .form-outline_border {
+  ;
+  border-radius: 4px;
+} */
 
 @media screen and (max-width: 768px) {
   .col-responsive {
